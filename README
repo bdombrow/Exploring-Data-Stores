@@ -1,0 +1,14 @@
+Exploring different data stores.
+
+This is a personal continuation of Portland State University CS-510 Data Management in the Cloud.
+
+The group project was to to implement a graph in a given data store and the following functions:
+
+1) Friends of friends
+2) Transitive Closure
+3) Bridges
+
+Bridges can be done by brute force with transitive closure or by Tarjan's method. The two do not produce the same results.
+
+See https://github.com/bdombrow/CS-510_Cassandra for my groups Cassandra implementations.
+
