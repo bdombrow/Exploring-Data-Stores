@@ -1,0 +1,6 @@
+Notes on setting up HBase.
+
+1) HBase refuses to run on anything other than the real Java. Ubunutu comes with OpenJDK. Had to switch to OracleJDK. This site had the best instructions on how to do it from scratch (no apt-get).
+http://balajitheone.blogspot.com/2011/08/installing-oracle-sun-jdk-17-on-ubuntu.html
+
+2) Ubunut had the /etc/host file set up with the local machine name (DMC-VM in my case) pointed to 127.0.1.1. This caused HBase to sit there with the region in transition.
