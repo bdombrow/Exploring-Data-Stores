@@ -23,6 +23,7 @@ public class MyLittleHBaseClient {
         // be found on the CLASSPATH
 
         Configuration config = HBaseConfiguration.create();
+        config.set("hbase.zookeeper.quorum", "10.9.73.105");
 
         // This instantiates an HTable object that connects you to
         // the "myLittleHBaseTable" table.
