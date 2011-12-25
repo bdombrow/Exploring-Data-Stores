@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="HBase">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/hbase-0.90.4/hbase-0.90.4-tests.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/hbase-0.90.4/hbase-0.90.4.jar!/" />
+      <root url="file://$USER_HOME$/Downloads/hbase-0.90.4/lib" />
+      <root url="file://$USER_HOME$/Downloads/hbase-0.90.4/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/Downloads/hbase-0.90.4/lib" />
+      <root url="file://$USER_HOME$/Downloads/hbase-0.90.4/lib" />
+    </SOURCES>
+    <jarDirectory url="file://$USER_HOME$/Downloads/hbase-0.90.4/lib" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/Downloads/hbase-0.90.4/lib" recursive="false" type="SOURCES" />
+  </library>
+</component>
