@@ -1,65 +1,60 @@
 package Loader;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import au.com.bytecode.opencsv.CSVReader;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.util.Bytes;
 
+import static java.lang.System.exit;
+
 public class Loader {
     public static void main(String[] args) throws IOException {
+
+        // Open up the input file
+        CSVReader reader = new CSVReader(new FileReader("/Users/brent/Documents/Education/PSU/Grad School/Data Stores/nodes.csv"));
 
         // Set up a connection to HBase
         Configuration config = HBaseConfiguration.create();
         config.set("hbase.zookeeper.quorum", "10.9.73.25");
 
-        // Set the nodes we are using
-        HTable nodes = new HTable(config, "graph");
-
-        // Create a new row and populate it's data
-        Put p1 = new Put(Bytes.toBytes("1"));      // Set the row first
-        p1.add(Bytes.toBytes("nodes"), Bytes.toBytes("name"), Bytes.toBytes("Brent"));  // Column Family, Column Name, Value
-        p1.add(Bytes.toBytes("nodes"), Bytes.toBytes("gender"), Bytes.toBytes("Male"));
-        p1.add(Bytes.toBytes("nodes"), Bytes.toBytes("occupation"), Bytes.toBytes("Masters Student"));
-
-        // Put the new row into HBase
-        //nodes.put(p1);
+        // Set the table we are using
+        HTable table = new HTable(config, "graph");
         
-        // Create a second row to test multiple put
-        Put p2 = new Put(Bytes.toBytes("2"));
-        p2.add(Bytes.toBytes("nodes"), Bytes.toBytes("name"), Bytes.toBytes("Steve"));
-        p2.add(Bytes.toBytes("nodes"), Bytes.toBytes("gender"), Bytes.toBytes("Male"));
-        p2.add(Bytes.toBytes("nodes"), Bytes.toBytes("occupation"), Bytes.toBytes("Architect"));
+        // Grab the column names from the first row
+        String headers[];
+        headers = reader.readNext();
+        if (headers == null) {
+            throw new IOException("Empty Input File");
+        }
         
-        // Multiple Put
-        List mput = new ArrayList<Put>();
-        mput.add(p1);
-        mput.add(p2);
 
-        //nodes.put(mput);
+        // Run through the rows  
+        String line[];
+        ArrayList<Put> mputs = new ArrayList<Put>();
+        while ((line = reader.readNext()) != null) {
+            mputs.add(parseToPut("nodes", headers, line));
+        }
         
-        // Add an edge and see what happens
-        //HTable edges = new HTable(config, "graph");
-        Put p3 = new Put(Bytes.toBytes("1"));
-        p3.add(Bytes.toBytes("edges"), Bytes.toBytes("relation"), Bytes.toBytes("Brother"));
-        p3.add(Bytes.toBytes("edges"), Bytes.toBytes("start"), Bytes.toBytes("1"));
-        p3.add(Bytes.toBytes("edges"), Bytes.toBytes("end"), Bytes.toBytes("2"));
-
-        //edges.put(p3);
-        
-        // Column families do not appear to be as distinct as Cassandra
-        mput.add(p3);
-        nodes.put(mput);
+        // Put them in
+        table.put(mputs);
 
         // Clean up
-        nodes.flushCommits();
-        //edges.flushCommits();
-        nodes.close();
-        //edges.close();
-        
+        table.flushCommits();
+        table.close(); 
 
+    }
+    
+    private static Put parseToPut(String cf, String headers[], String line[]) {
+        Put p = new Put(Bytes.toBytes(line[0]));
+        for (int i = 1; i < line.length; ++i) {
+            p.add(Bytes.toBytes(cf), Bytes.toBytes(headers[i]), Bytes.toBytes(line[i]));
+        }
+        
+        return p;
     }
 }
