@@ -7,7 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="HBase" level="project" />
+    <orderEntry type="library" name="HBase" level="project" />
   </component>
 </module>
 
