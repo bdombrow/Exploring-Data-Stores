@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="65b64683-f550-441b-9900-e47ec0bfdc0c" name="Default" comment="Testing multi put. It looks like it will be better to have the nodes and edges in separate tables. The column family distinction is to as great as Cassandra.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/HBase.xml" afterPath="$PROJECT_DIR$/.idea/libraries/HBase.xml" />
+    <list default="true" id="65b64683-f550-441b-9900-e47ec0bfdc0c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Loader/Loader.iml" afterPath="$PROJECT_DIR$/Loader/Loader.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Loader/src/Loader/Loader.java" afterPath="$PROJECT_DIR$/Loader/src/Loader/Loader.java" />
     </list>
     <ignored path="Loader.iws" />
     <ignored path=".idea/workspace.xml" />
