@@ -1,0 +1,14 @@
+1,2,Brother,0.15
+1,6,Husban/Wife,0.48
+2,3,Uncle/Nephew,0.50
+4,5,Husband/Wife,0.03
+6,7,Mother/Son,0.86
+3,8,Brother,0.90
+5,8,Sister,0.65
+7,8,Brother,0.27
+8,9,Father/Son,0.54
+9,10,Son/Mother,0.94
+9,11,"Cousin, maybe",0.87
+11,12,Alter Ego,0.19
+1,4,Father/Son-in-Law,0.72
+13,14,Son/Mother,0.62

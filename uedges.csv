@@ -1,0 +1,27 @@
+1,2,Brother
+1,6,Wife
+2,3,Uncle
+4,5,Husband
+6,7,Mother
+3,8,Brother
+5,8,Sister
+7,8,Brother
+8,9,Father
+9,10,Son
+9,11,"Cousin, maybe"
+11,12,Alter Ego
+1,4,Father-in-Law
+13,14,Son
+2,1,Brother
+6,1,Husband
+3,2,Nephew
+5,4,Wife
+7,6,Son
+8,3,Brother
+8,5,Sister
+8,7,Brother
+9,8,Son
+10,9,Mother
+11,9,"Cousin, maybe"
+4,1,Son-in-Law
+14,13,Mother
