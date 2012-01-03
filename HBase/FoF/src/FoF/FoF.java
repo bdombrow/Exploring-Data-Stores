@@ -29,7 +29,7 @@ import java.util.TreeSet;
 public class FoF {
 
     // Set the graph type
-    private static final boolean UNDIRECTED = false;
+    private static final boolean UNDIRECTED = true;
 
     /**
      * main routine.
@@ -41,15 +41,19 @@ public class FoF {
      */
     
     public static void main(String[] args) throws Exception {
+
         TreeSet<String> friends = new TreeSet<String>();
         TreeSet<String> friendsofFriends = new TreeSet<String>();
 
+        // Get the friends
         friends.addAll(getFriends("1"));
 
+        // Get the friends of the friends
         for (String friend : friends) {
             friendsofFriends.addAll(getFriends(friend));
         }
 
+        // Display the results
         System.out.println(friendsofFriends);
 
     }
@@ -61,7 +65,7 @@ public class FoF {
      *
      * @param node Starting node
      * @return TreeSet of Friends
-     * @throws Exception
+     * @throws Exception Passed up from HBase
      */
 
     private static TreeSet<String> getFriends(String node) throws Exception {
